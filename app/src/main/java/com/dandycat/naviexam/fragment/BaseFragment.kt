@@ -9,10 +9,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 
+/**
+ * 베이스 프래그먼트
+ * 해당 화면서는 BasePrimaryFragment, BaseChildFragment에 상속을 주도록 한다.
+ */
 abstract class BaseFragment<V : ViewDataBinding>(private val layoutResId : Int) : Fragment() {
 
     abstract fun init()
-    abstract fun backPressed()
+
     lateinit var binding: V
 
     override fun onCreateView(
@@ -21,10 +25,6 @@ abstract class BaseFragment<V : ViewDataBinding>(private val layoutResId : Int) 
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater,layoutResId,container,false)
-        activity?.onBackPressedDispatcher?.addCallback {
-            backPressed()
-        }
-
         init()
         return binding.root
     }

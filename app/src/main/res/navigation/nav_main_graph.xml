@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragment_splash"
-        android:name="com.dandycat.naviexam.fragment.SplashFragment"
+        android:name="com.dandycat.naviexam.fragment.splash.SplashFragment"
         tools:layout="@layout/fragment_splash"
         android:label="스플래시"
         >
@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/fragment_main"
-        android:name="com.dandycat.naviexam.fragment.MainFragment"
+        android:name="com.dandycat.naviexam.fragment.main.MainFragment"
         tools:layout="@layout/fragment_main"
         android:label="메인"
         >
