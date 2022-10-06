@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main_graph"
+    app:startDestination="@id/fragment_splash">
+
+    <fragment
+        android:id="@+id/fragment_splash"
+        android:name="com.dandycat.naviexam.fragment.SplashFragment"
+        tools:layout="@layout/fragment_splash"
+        android:label="스플래시"
+        >
+        <action
+            android:id="@+id/action_fragment_splash_to_fragment_main"
+            app:destination="@id/fragment_main" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_main"
+        android:name="com.dandycat.naviexam.fragment.MainFragment"
+        tools:layout="@layout/fragment_main"
+        android:label="메인"
+        >
+
+    </fragment>
+
+</navigation>
