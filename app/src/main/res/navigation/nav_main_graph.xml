@@ -17,12 +17,23 @@
     </fragment>
 
     <fragment
+        android:id="@+id/fragment_tutorial"
+        android:name="com.dandycat.naviexam.fragment.tutorial.TutorialFragment"
+        tools:layout="@layout/fragment_tutorial"
+        android:label="@string/label_tutorial"
+        >
+
+    </fragment>
+
+    <fragment
         android:id="@+id/fragment_main"
         android:name="com.dandycat.naviexam.fragment.main.MainFragment"
         tools:layout="@layout/fragment_main"
         android:label="@string/label_main"
         >
-
+        <action
+            android:id="@+id/action_fragment_main_to_fragment_tutorial"
+            app:destination="@id/fragment_tutorial" />
     </fragment>
 
     <!-- 메인 바텀을 눌렀을 시에 홈으로 이동 되어야 한다.-->
