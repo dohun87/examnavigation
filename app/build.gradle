@@ -64,4 +64,7 @@ dependencies {
     //Hilt 확장 라이브러리(네비게이션에서 이용)
     implementation 'androidx.hilt:hilt-navigation:1.0.0'
     implementation 'androidx.hilt:hilt-navigation-fragment:1.0.0'
+
+    implementation project(':domain')
+    implementation project(':data')
 }

@@ -21,3 +21,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "naviexam"
 include ':app'
+include ':data'
+include ':domain'
