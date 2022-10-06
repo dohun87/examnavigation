@@ -9,7 +9,7 @@
         android:id="@+id/fragment_splash"
         android:name="com.dandycat.naviexam.fragment.splash.SplashFragment"
         tools:layout="@layout/fragment_splash"
-        android:label="스플래시"
+        android:label="@string/label_splash"
         >
         <action
             android:id="@+id/action_fragment_splash_to_fragment_main"
@@ -20,9 +20,31 @@
         android:id="@+id/fragment_main"
         android:name="com.dandycat.naviexam.fragment.main.MainFragment"
         tools:layout="@layout/fragment_main"
-        android:label="메인"
+        android:label="@string/label_main"
         >
 
     </fragment>
+
+    <!-- 메인 바텀을 눌렀을 시에 홈으로 이동 되어야 한다.-->
+    <action
+        android:id="@+id/move_main"
+        app:destination="@id/fragment_main"
+        />
+
+    <fragment
+        android:id="@+id/fragment_profile"
+        android:name="com.dandycat.naviexam.fragment.profile.ProfileFragment"
+        tools:layout="@layout/fragment_profile"
+        android:label="@string/label_profile"
+        >
+
+    </fragment>
+
+    <!-- 프로필 눌렀을 시 프로필로 이동 되어야 한다.-->
+    <action
+        android:id="@+id/move_profile"
+        app:destination="@id/fragment_profile"
+        />
+
 
 </navigation>

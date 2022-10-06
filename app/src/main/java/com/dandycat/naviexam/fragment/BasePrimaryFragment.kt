@@ -10,11 +10,11 @@ import androidx.databinding.ViewDataBinding
  */
 abstract class BasePrimaryFragment<V : ViewDataBinding>(layoutResId : Int) : BaseFragment<V>(layoutResId) {
 
-    abstract fun backPressed()
     abstract fun initWidget()
+    abstract fun onBackPressed()
     override fun init() {
         activity?.onBackPressedDispatcher?.addCallback {
-            backPressed()
+            onBackPressed()
         }
         initWidget()
     }

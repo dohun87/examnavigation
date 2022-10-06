@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">naviexam</string>
+    <!-- Navigation Label -->
+    <string name="label_splash">SplashFragment</string>
+    <string name="label_main">MainFragment</string>
+    <string name="label_profile">ProfileFragment</string>
+    <string name="label_tutorial">TutorialFragment</string>
+    <string name="label_login">LoginFragment</string>
 </resources>

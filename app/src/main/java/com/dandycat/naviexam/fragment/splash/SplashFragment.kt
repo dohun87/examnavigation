@@ -16,13 +16,13 @@ class SplashFragment() : BasePrimaryFragment<FragmentSplashBinding>(R.layout.fra
         Handler(Looper.getMainLooper())
     }
 
-    override fun backPressed() {
-        requireActivity().finishAffinity()
-    }
-
     override fun initWidget() {
         mHandler.postDelayed({
             findNavController().navigate(R.id.action_fragment_splash_to_fragment_main)
         },3000L)
+    }
+
+    override fun onBackPressed() {
+        requireActivity().finish()
     }
 }

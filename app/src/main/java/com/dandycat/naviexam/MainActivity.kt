@@ -2,20 +2,72 @@ package com.dandycat.naviexam
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
+import android.view.View
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import com.dandycat.naviexam.databinding.ActivityMainBinding
 import com.dandycat.naviexam.util.Logger
+import com.google.android.material.navigation.NavigationBarView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
+
+    private lateinit var binding : ActivityMainBinding
+    private var currentFragment = ""
+
+    private val visibleBtmNav : (CharSequence) -> Int = { destination ->
+        when(destination){
+            getString(R.string.label_main),
+            getString(R.string.label_profile) -> View.VISIBLE
+            else -> View.GONE
+        }
+    }
+
+    private val checkedBtmNavMenu : (CharSequence) -> Unit = { destination ->
+        when(destination){
+            getString(R.string.label_main) -> {
+                binding.btmNav.menu.findItem(R.id.home).isChecked = true
+            }
+            getString(R.string.label_profile) -> {
+                binding.btmNav.menu.findItem(R.id.profile).isChecked = true
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
         val navController = navHostFragment.navController
         navController.addOnDestinationChangedListener {_,destination,_ ->
-            Logger.d("currentDestinationFragment : ${destination.label}")
+            destination.label?.let { label ->
+                Logger.d("currentDestination Label : $label")
+                val viewStatus = visibleBtmNav(label)
+                binding.btmNav.visibility = viewStatus
+                if(viewStatus==View.VISIBLE){
+                    checkedBtmNavMenu(label)
+                }
+            }
+        }
+
+        binding.btmNav.setOnItemSelectedListener(this)
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.home->{
+                findNavController(R.id.nav_host).navigate(R.id.move_main)
+                true
+            }
+            R.id.profile->{
+                findNavController(R.id.nav_host).navigate(R.id.move_profile)
+                true
+            }
+            else -> false
         }
     }
 }
