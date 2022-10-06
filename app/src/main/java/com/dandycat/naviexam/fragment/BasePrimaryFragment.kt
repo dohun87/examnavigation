@@ -10,6 +10,10 @@ import androidx.databinding.ViewDataBinding
  */
 abstract class BasePrimaryFragment<V : ViewDataBinding>(layoutResId : Int) : BaseFragment<V>(layoutResId) {
 
+    companion object {
+        const val LOGINSTATUS = "login_status"
+    }
+
     abstract fun initWidget()
     abstract fun onBackPressed()
     override fun init() {

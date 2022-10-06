@@ -48,7 +48,9 @@
         tools:layout="@layout/fragment_profile"
         android:label="@string/label_profile"
         >
-
+        <action
+            android:id="@+id/action_fragment_profile_to_fragment_login"
+            app:destination="@id/fragment_login" />
     </fragment>
 
     <!-- 프로필 눌렀을 시 프로필로 이동 되어야 한다.-->
@@ -56,6 +58,16 @@
         android:id="@+id/move_profile"
         app:destination="@id/fragment_profile"
         />
+
+    <fragment
+        android:id="@+id/fragment_login"
+        android:name="com.dandycat.naviexam.fragment.login.LoginFragment"
+        tools:layout="@layout/fragment_login"
+        android:label="@string/label_login"
+        >
+
+
+    </fragment>
 
 
 </navigation>
