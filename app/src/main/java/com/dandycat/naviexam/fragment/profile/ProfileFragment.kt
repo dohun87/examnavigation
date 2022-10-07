@@ -1,20 +1,23 @@
 package com.dandycat.naviexam.fragment.profile
 
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.dandycat.naviexam.R
 import com.dandycat.naviexam.databinding.FragmentProfileBinding
-import com.dandycat.naviexam.fragment.BaseChildFragment
 import com.dandycat.naviexam.fragment.BasePrimaryFragment
 import com.dandycat.naviexam.util.Logger
+import com.dandycat.naviexam.viewmodel.MainActivityViewModel
 import com.dandycat.naviexam.viewmodel.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ProfileFragment() : BasePrimaryFragment<FragmentProfileBinding>(R.layout.fragment_profile) {
 
-    private val vm : ProfileViewModel by viewModels()
+    private val profileVm : ProfileViewModel by viewModels()
+    private val mainVm : MainActivityViewModel by activityViewModels()
+
 
     override fun initSetting() {
         Logger.d("프로필 화면 시작")
@@ -32,7 +35,12 @@ class ProfileFragment() : BasePrimaryFragment<FragmentProfileBinding>(R.layout.f
                 initWidget()
             }
         })
-        if(!vm.getLoginStatus()) findNavController().navigate(R.id.action_fragment_profile_to_fragment_login)
+        if(mainVm.getLoginName().isNullOrEmpty()){
+            findNavController().navigate(R.id.action_fragment_profile_to_fragment_login)
+        }
+        else{
+            initWidget()
+        }
     }
 
     override fun onBackPressed() {
@@ -40,7 +48,7 @@ class ProfileFragment() : BasePrimaryFragment<FragmentProfileBinding>(R.layout.f
     }
 
     override fun initWidget() {
-        TODO("Not yet implemented")
+        binding.vm = mainVm
     }
 
 }

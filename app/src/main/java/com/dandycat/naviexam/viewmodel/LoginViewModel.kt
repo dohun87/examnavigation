@@ -15,12 +15,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val mPrefModule : PreferenceModule,
     private val mToastModule: ToastModule
 ) : ViewModel() {
 
-    private val _loginSuccess = MutableLiveData<Event<Boolean>>()
-    val loginSuccess : LiveData<Event<Boolean>> get() = _loginSuccess
+    private val _loginSuccess = MutableLiveData<Event<String>>()
+    val loginSuccess : LiveData<Event<String>> get() = _loginSuccess
 
     private var inputId = ""
 
@@ -31,8 +30,7 @@ class LoginViewModel @Inject constructor(
 
     fun setLogin(){
         if(inputId.isNotEmpty()){
-            mPrefModule.setLoginStatus(true)
-            _loginSuccess.postValue(Event(true))
+            _loginSuccess.postValue(Event(inputId))
         }else{
             mToastModule.showToast("아이디를 입력해주세요")
         }

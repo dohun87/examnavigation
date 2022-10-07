@@ -10,5 +10,4 @@ class ProfileViewModel @Inject constructor(
     private val prefModule : PreferenceModule
 ) : ViewModel() {
 
-    fun getLoginStatus() = prefModule.getLoginStatus()
 }

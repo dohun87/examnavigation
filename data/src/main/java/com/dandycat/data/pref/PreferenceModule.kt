@@ -9,6 +9,7 @@ class PreferenceModule @Inject constructor(private val context : Context) {
         private const val PREF_NAME = "navi_pref"
         private const val TUTORIAL = "tutorial"
         private const val LOGIN = "login"
+        private const val NAME ="name"
     }
 
     private val pref by lazy {
@@ -22,6 +23,6 @@ class PreferenceModule @Inject constructor(private val context : Context) {
     fun setTutorialStatus(tutorialEnd : Boolean) = mEditor.putBoolean(TUTORIAL,tutorialEnd).commit()
     fun getTutorialStatus() : Boolean = pref.getBoolean(TUTORIAL,true)
 
-    fun setLoginStatus(isLogin : Boolean) = mEditor.putBoolean(LOGIN,isLogin).commit()
-    fun getLoginStatus() = pref.getBoolean(LOGIN,false)
+    fun setLoginName(name : String?) = mEditor.putString(NAME,name).commit()
+    fun getLoginName() = pref.getString(NAME,null)
 }

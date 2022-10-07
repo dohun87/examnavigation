@@ -11,14 +11,7 @@ class MainActivityViewModel @Inject constructor(
     private val prefModule : PreferenceModule
 ) : ViewModel(){
 
-    fun setLogin(userId : String){
-        if(inputId.isNotEmpty()){
-            mPrefModule.setLoginName(userId)
-            _loginName.postValue(Event(userId))
-        }else{
-            mToastModule.showToast("아이디를 입력해주세요")
-        }
-    }
-
     fun getLoginName() = prefModule.getLoginName()
+    fun setLoginName(userId : String) = prefModule.setLoginName(userId)
+
 }
