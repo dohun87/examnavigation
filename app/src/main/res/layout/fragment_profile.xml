@@ -12,14 +12,32 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_centerInParent="true"
-            app:userName="@{vm.getLoginName}"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            />
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:userName="@{vm.getLoginName}"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="링크만들기"
+                android:onClick="@{()->vm.createDynamicLink()}"
+                />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
 
     </RelativeLayout>
 
