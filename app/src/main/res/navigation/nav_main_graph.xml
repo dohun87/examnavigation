@@ -58,7 +58,8 @@
     <action
         android:id="@+id/move_login"
         app:destination="@id/login_graph"
-        />
+        app:popUpTo="@id/fragment_profile"
+        app:popUpToInclusive="true" />
 
 
 </navigation>

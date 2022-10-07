@@ -22,6 +22,7 @@ class RegFragment() : BasePrimaryFragment<FragmentRegBinding>(R.layout.fragment_
     override fun initSetting() {
         regVm.authValue.observe(viewLifecycleOwner,SingleEventObserver{
             Logger.d("inputId : $it")
+            moveRegCompFragment(it)
         })
         initWidget()
     }
@@ -32,5 +33,10 @@ class RegFragment() : BasePrimaryFragment<FragmentRegBinding>(R.layout.fragment_
 
     override fun initWidget() {
         binding.vm = regVm
+    }
+
+    private fun moveRegCompFragment(userName : String){
+        val action = RegFragmentDirections.actionFragmentRegToFragmentRegComp(userName)
+        findNavController().navigate(action)
     }
 }

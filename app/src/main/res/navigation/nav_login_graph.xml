@@ -24,7 +24,33 @@
         android:name="com.dandycat.naviexam.fragment.login.RegFragment"
         tools:layout="@layout/fragment_reg"
         android:label="@string/label_reg"
-        />
+        >
+        <action
+            android:id="@+id/action_fragment_reg_to_fragment_reg_comp"
+            app:destination="@id/fragment_reg_comp"
+            app:popUpTo="@id/fragment_login"
+            app:popUpToInclusive="true"
+            >
+            <argument
+                android:name="userName"
+                app:argType="string"
+                android:defaultValue="null"
+                />
+        </action>
+    </fragment>
 
+    <fragment
+        android:id="@+id/fragment_reg_comp"
+        android:name="com.dandycat.naviexam.fragment.login.RegCompFragment"
+        tools:layout="@layout/fragment_reg_comp"
+        android:label="@string/label_reg_comp"
+        >
+        <argument
+            android:name="userName"
+            app:argType="string"
+            android:defaultValue="null"
+            />
+
+    </fragment>
 
 </navigation>
