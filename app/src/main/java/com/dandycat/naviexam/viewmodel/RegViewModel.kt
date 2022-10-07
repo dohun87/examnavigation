@@ -21,7 +21,6 @@ class RegViewModel @Inject constructor(
     val authValue : LiveData<Event<String>> get() = _authValue
 
     fun idInputAfter(s : Editable){
-        Logger.d("inputId : $s")
         inputId = s.toString()
     }
 

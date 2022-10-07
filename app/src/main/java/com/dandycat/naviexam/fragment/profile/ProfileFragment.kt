@@ -31,11 +31,10 @@ class ProfileFragment() : BasePrimaryFragment<FragmentProfileBinding>(R.layout.f
             if(!it){
                 Logger.d("로그인 버튼을 누르지 않았기 때문에 메인으로 넘겨준다")
                 navController.popBackStack()
-            }else{
-                initWidget()
             }
         })
         if(mainVm.getLoginName().isNullOrEmpty()){
+            Logger.d("로그인 화면으로의 이동!!")
             findNavController().navigate(R.id.move_login)
         }
         else{

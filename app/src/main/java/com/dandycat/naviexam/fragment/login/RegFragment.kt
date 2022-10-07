@@ -16,8 +16,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class RegFragment() : BasePrimaryFragment<FragmentRegBinding>(R.layout.fragment_reg) {
 
     private val regVm : RegViewModel by viewModels()
-    //SafeArg로 이용해서 전달 예제를 쓸거기 때문에 해당 ViewModel은 사용하지 않는다.
-    //private val mainVm : MainActivityViewModel by activityViewModels()
+    //해당 뷰모델에서는 아이디를 가입이 될 경우 저장 시키게 해준다
+    private val mainVm : MainActivityViewModel by activityViewModels()
 
     override fun initSetting() {
         regVm.authValue.observe(viewLifecycleOwner,SingleEventObserver{
@@ -36,6 +36,7 @@ class RegFragment() : BasePrimaryFragment<FragmentRegBinding>(R.layout.fragment_
     }
 
     private fun moveRegCompFragment(userName : String){
+        mainVm.setLoginName(userName)
         val action = RegFragmentDirections.actionFragmentRegToFragmentRegComp(userName)
         findNavController().navigate(action)
     }
