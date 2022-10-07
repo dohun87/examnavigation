@@ -5,6 +5,8 @@
     android:id="@+id/nav_main_graph"
     app:startDestination="@id/fragment_splash">
 
+    <include app:graph="@navigation/nav_login_graph"/>
+
     <fragment
         android:id="@+id/fragment_splash"
         android:name="com.dandycat.naviexam.fragment.splash.SplashFragment"
@@ -34,6 +36,9 @@
         <action
             android:id="@+id/action_fragment_main_to_fragment_tutorial"
             app:destination="@id/fragment_tutorial" />
+        <action
+            android:id="@+id/action_fragment_main_to_fragment_profile"
+            app:destination="@id/fragment_profile" />
     </fragment>
 
     <!-- 메인 바텀을 눌렀을 시에 홈으로 이동 되어야 한다.-->
@@ -47,27 +52,13 @@
         android:name="com.dandycat.naviexam.fragment.profile.ProfileFragment"
         tools:layout="@layout/fragment_profile"
         android:label="@string/label_profile"
-        >
-        <action
-            android:id="@+id/action_fragment_profile_to_fragment_login"
-            app:destination="@id/fragment_login" />
-    </fragment>
-
-    <!-- 프로필 눌렀을 시 프로필로 이동 되어야 한다.-->
-    <action
-        android:id="@+id/move_profile"
-        app:destination="@id/fragment_profile"
         />
 
-    <fragment
-        android:id="@+id/fragment_login"
-        android:name="com.dandycat.naviexam.fragment.login.LoginFragment"
-        tools:layout="@layout/fragment_login"
-        android:label="@string/label_login"
-        >
-
-
-    </fragment>
+    <!-- 로그인 Navigation Graph로의 이동 -->
+    <action
+        android:id="@+id/move_login"
+        app:destination="@id/login_graph"
+        />
 
 
 </navigation>

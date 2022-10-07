@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
                 true
             }
             R.id.profile->{
-                findNavController(R.id.nav_host).navigate(R.id.move_profile)
+                findNavController(R.id.nav_host).navigate(R.id.action_fragment_main_to_fragment_profile)
                 true
             }
             else -> false

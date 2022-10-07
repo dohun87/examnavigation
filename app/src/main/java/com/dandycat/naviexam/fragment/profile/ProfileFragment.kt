@@ -36,7 +36,7 @@ class ProfileFragment() : BasePrimaryFragment<FragmentProfileBinding>(R.layout.f
             }
         })
         if(mainVm.getLoginName().isNullOrEmpty()){
-            findNavController().navigate(R.id.action_fragment_profile_to_fragment_login)
+            findNavController().navigate(R.id.move_login)
         }
         else{
             initWidget()
