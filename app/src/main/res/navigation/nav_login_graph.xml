@@ -11,6 +11,19 @@
         android:name="com.dandycat.naviexam.fragment.login.LoginFragment"
         tools:layout="@layout/fragment_login"
         android:label="@string/label_login"
+        >
+
+        <action
+            android:id="@+id/action_fragment_login_to_fragment_reg"
+            app:destination="@id/fragment_reg" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/fragment_reg"
+        android:name="com.dandycat.naviexam.fragment.login.RegFragment"
+        tools:layout="@layout/fragment_reg"
+        android:label="@string/label_reg"
         />
 
 

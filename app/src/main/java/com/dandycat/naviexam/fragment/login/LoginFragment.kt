@@ -19,6 +19,7 @@ class LoginFragment : BasePrimaryFragment<FragmentLoginBinding>(R.layout.fragmen
 
     override fun initSetting() {
         binding.vm = loginVm
+        binding.view = this@LoginFragment
         loginVm.loginSuccess.observe(viewLifecycleOwner,SingleEventObserver{
             mainVm.setLoginName(it)
             setPreviousNavigationDataHandle(true)
@@ -36,5 +37,9 @@ class LoginFragment : BasePrimaryFragment<FragmentLoginBinding>(R.layout.fragmen
 
     private fun setPreviousNavigationDataHandle(isSuccess : Boolean){
         findNavController().previousBackStackEntry?.savedStateHandle?.set(LOGINSTATUS,isSuccess)
+    }
+
+    fun moveRegFragment(){
+        findNavController().navigate(R.id.action_fragment_login_to_fragment_reg)
     }
 }

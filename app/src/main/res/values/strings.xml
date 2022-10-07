@@ -6,4 +6,5 @@
     <string name="label_profile">ProfileFragment</string>
     <string name="label_tutorial">TutorialFragment</string>
     <string name="label_login">LoginFragment</string>
+    <string name="label_reg">RegFragment</string>
 </resources>

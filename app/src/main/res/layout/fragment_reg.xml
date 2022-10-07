@@ -5,10 +5,7 @@
     <data>
         <variable
             name="vm"
-            type="com.dandycat.naviexam.viewmodel.LoginViewModel" />
-        <variable
-            name="view"
-            type="com.dandycat.naviexam.fragment.login.LoginFragment" />
+            type="com.dandycat.naviexam.viewmodel.RegViewModel" />
     </data>
 
     <RelativeLayout
@@ -38,17 +35,8 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="로그인"
-                android:onClick="@{()->vm.setLogin()}"
-                android:layout_gravity="center"
-                android:layout_marginTop="4dp"
-                />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:text="회원가입"
-                android:onClick="@{()->view.moveRegFragment()}"
+                android:onClick="@{()->vm.checkedAuthUser()}"
                 android:layout_gravity="center"
                 android:layout_marginTop="4dp"
                 />
