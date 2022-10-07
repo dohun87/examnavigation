@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.dandycat.naviexam.databinding.ActivityMainBinding
 import com.dandycat.naviexam.util.Logger
+import com.dandycat.naviexam.viewmodel.MainActivityViewModel
 import com.google.android.material.navigation.NavigationBarView
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,6 +19,8 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
 
     private lateinit var binding : ActivityMainBinding
     private var currentFragment = ""
+
+    private val vm : MainActivityViewModel by viewModels() // Activity용 ViewModel을 선언해준다
 
     private val visibleBtmNav : (CharSequence) -> Int = { destination ->
         when(destination){

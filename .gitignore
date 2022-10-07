@@ -383,3 +383,7 @@ domain/build/intermediates/runtime_library_classes_jar/debug/classes.jar
 domain/build/intermediates/symbol_list_with_package_name/debug/package-aware-r.txt
 domain/build/outputs/logs/manifest-merger-debug-report.txt
 domain/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin
+.gradle/7.3.3/checksums/md5-checksums.bin
+.gradle/7.3.3/checksums/sha1-checksums.bin
+.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_android_extensions_runtime_1_6_21.xml
+.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_parcelize_runtime_1_6_21.xml
