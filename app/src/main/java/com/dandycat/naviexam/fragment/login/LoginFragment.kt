@@ -14,22 +14,26 @@ class LoginFragment : BasePrimaryFragment<FragmentLoginBinding>(R.layout.fragmen
 
     private val vm : LoginViewModel by viewModels()
 
-    override fun initWidget() {
+    override fun initSetting() {
         binding.vm = vm
         vm.loginSuccess.observe(viewLifecycleOwner,SingleEventObserver{
-            setPreviosNavigationDataHandle(it)
+            setPreviousNavigationDataHandle(it)
             findNavController().popBackStack()
         })
-        setPreviosNavigationDataHandle(false)
+        setPreviousNavigationDataHandle(false)
     }
 
+    override fun initWidget() {}
+
     override fun onBackPressed() {
-        setPreviosNavigationDataHandle(false)
+        setPreviousNavigationDataHandle(false)
         findNavController().popBackStack()
     }
 
-    private fun setPreviosNavigationDataHandle(isSuccess : Boolean){
+    private fun setPreviousNavigationDataHandle(isSuccess : Boolean){
         findNavController().previousBackStackEntry?.savedStateHandle?.set(LOGINSTATUS,isSuccess)
 
     }
+
+
 }

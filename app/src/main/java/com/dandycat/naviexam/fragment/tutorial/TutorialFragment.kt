@@ -13,6 +13,10 @@ class TutorialFragment() : BasePrimaryFragment<FragmentTutorialBinding>(R.layout
 
     private val vm : TutorialViewModel by viewModels()
 
+    override fun initSetting() {
+
+    }
+
     override fun initWidget() {
 
     }

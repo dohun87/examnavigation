@@ -13,14 +13,16 @@ abstract class BasePrimaryFragment<V : ViewDataBinding>(layoutResId : Int) : Bas
     companion object {
         const val LOGINSTATUS = "login_status"
     }
+    abstract fun initSetting()
 
-    abstract fun initWidget()
     abstract fun onBackPressed()
+    abstract fun initWidget()
+
     override fun init() {
         activity?.onBackPressedDispatcher?.addCallback {
             onBackPressed()
         }
-        initWidget()
+        initSetting()
     }
 
 }

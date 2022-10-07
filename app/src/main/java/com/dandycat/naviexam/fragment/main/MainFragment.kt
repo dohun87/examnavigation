@@ -14,9 +14,11 @@ class MainFragment() : BasePrimaryFragment<FragmentMainBinding>(R.layout.fragmen
 
     private val vm : MainViewModel by viewModels()
 
-    override fun initWidget() {
+    override fun initSetting() {
         if(vm.getTutorial()) findNavController().navigate(R.id.action_fragment_main_to_fragment_tutorial)
     }
+
+    override fun initWidget() {}
 
     override fun onBackPressed() {
         requireActivity().finish()
