@@ -1,0 +1,53 @@
+{
+  "project_info": {
+    "project_number": "197822330678",
+    "project_id": "pooleplayer-2e2c4",
+    "storage_bucket": "pooleplayer-2e2c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:197822330678:android:134016699ad3f923906597",
+        "android_client_info": {
+          "package_name": "net.poolemath.pooleplayer.beta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "197822330678-nutci63iv7nr0l40kscd0jauatphrfrm.apps.googleusercontent.com",
+          "client_type": 3,
+		  "android_client_info": {
+			"package_name": "net.poolemath.pooleplayer.beta"
+			}
+        },
+		 {
+          "client_id": "197822330678-nutci63iv7nr0l40kscd0jauatphrfrm.apps.googleusercontent.com",
+          "client_type": 3,
+		  "android_client_info": {
+			"package_name": "net.poolemath.pooleplayer"
+			}
+        },
+		{
+          "client_id": "197822330678-nutci63iv7nr0l40kscd0jauatphrfrm.apps.googleusercontent.com",
+          "client_type": 3
+		}
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuV5NYGt_yxpnMHZjSOx_u43zEcS1CAZA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "197822330678-nutci63iv7nr0l40kscd0jauatphrfrm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

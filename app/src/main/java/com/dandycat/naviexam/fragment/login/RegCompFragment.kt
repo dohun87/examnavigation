@@ -33,7 +33,6 @@ class RegCompFragment() : BasePrimaryFragment<FragmentRegCompBinding>(R.layout.f
         with(findNavController()){
             //특정 프래그먼트로의 데이터 전달시 사용
             //getBackStackEntry(R.id.fragment_profile).savedStateHandle.set(LOGINSTATUS,true)
-            
             //바로 뒤에 프래그먼트가 있을시 데이터 전달 사용
             previousBackStackEntry?.savedStateHandle?.set(LOGINSTATUS,true)
             popBackStack()

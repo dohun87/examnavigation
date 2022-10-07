@@ -7,16 +7,20 @@ import androidx.navigation.fragment.findNavController
 import com.dandycat.naviexam.R
 import com.dandycat.naviexam.databinding.FragmentProfileBinding
 import com.dandycat.naviexam.fragment.BasePrimaryFragment
+import com.dandycat.naviexam.util.DynamicLinkUtil
 import com.dandycat.naviexam.util.Logger
 import com.dandycat.naviexam.viewmodel.MainActivityViewModel
 import com.dandycat.naviexam.viewmodel.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class ProfileFragment() : BasePrimaryFragment<FragmentProfileBinding>(R.layout.fragment_profile) {
 
     private val profileVm : ProfileViewModel by viewModels()
     private val mainVm : MainActivityViewModel by activityViewModels()
+
+    @Inject lateinit var mDynamicLinkUtil: DynamicLinkUtil
 
 
     override fun initSetting() {
