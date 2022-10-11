@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "990548768576-02299n5cqs71g1d83or7j4mg23kejact.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dandycat.naviexam",
+            "certificate_hash": "f0dd6acf004a5b432e78097f72eac29286acc968"
+          }
+        },
+        {
           "client_id": "990548768576-8o1ahrfdlveejbjcrs6e7t28rppdgdv2.apps.googleusercontent.com",
           "client_type": 3
         }
