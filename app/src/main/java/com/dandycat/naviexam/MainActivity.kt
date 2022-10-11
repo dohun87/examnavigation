@@ -89,6 +89,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
                 Logger.d("userName : $it")
                 if(!it.equals(vm.getLoginName(),true) &&
                         !currentFragment.equals(getString(R.string.label_profile),true)){
+                    //SafeArgs를 이용한 동작 방식
                     val args = OtherProfileFragmentDirections.moveProfileOther(it)
                     findNavController(R.id.nav_host).navigate(args)
                 }
