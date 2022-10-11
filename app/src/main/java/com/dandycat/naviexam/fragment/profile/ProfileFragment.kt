@@ -47,6 +47,9 @@ class ProfileFragment() : BasePrimaryFragment<FragmentProfileBinding>(R.layout.f
                     sharedDynamicLink(it)
                 }
             })
+            mainVm.logout.observe(viewLifecycleOwner,SingleEventObserver{
+                if(it) findNavController().navigate(R.id.move_main)
+            })
 
             initWidget()
         }

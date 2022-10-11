@@ -10,16 +10,20 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.dandycat.naviexam.databinding.ActivityMainBinding
+import com.dandycat.naviexam.fragment.profile.OtherProfileFragmentDirections
+import com.dandycat.naviexam.util.DynamicLinkUtil
 import com.dandycat.naviexam.util.Logger
 import com.dandycat.naviexam.viewmodel.MainActivityViewModel
 import com.google.android.material.navigation.NavigationBarView
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
 
     private lateinit var binding : ActivityMainBinding
     private var currentFragment = ""
+    @Inject lateinit var mDynamicLinkUtil: DynamicLinkUtil
 
     private val vm : MainActivityViewModel by viewModels() // Activity용 ViewModel을 선언해준다
 
@@ -51,6 +55,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         navController.addOnDestinationChangedListener {_,destination,_ ->
             destination.label?.let { label ->
                 Logger.d("currentDestination Label : $label")
+                currentFragment = label.toString()
                 val viewStatus = visibleBtmNav(label)
                 binding.btmNav.visibility = viewStatus
                 if(viewStatus==View.VISIBLE){
@@ -79,5 +84,17 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
         Logger.d("데이터 들어왔다!!")
+        mDynamicLinkUtil.decodeDynamicLink(intent){
+            it?.let {
+                Logger.d("userName : $it")
+                if(!it.equals(vm.getLoginName(),true) &&
+                        !currentFragment.equals(getString(R.string.label_profile),true)){
+                    val args = OtherProfileFragmentDirections.moveProfileOther(it)
+                    findNavController(R.id.nav_host).navigate(args)
+                }
+            }?: kotlin.run {
+                Logger.e("정상데이터 아니다!!")
+            }
+        }
     }
 }

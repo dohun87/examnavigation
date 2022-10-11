@@ -59,5 +59,32 @@
         android:id="@+id/move_login"
         app:destination="@id/login_graph"/>
 
+    <!-- 글로벌 이동 + SafeArgs를 이용하여 데이터 전달을 해준다-->
+    <action
+        android:id="@+id/move_profile_other"
+        app:destination="@id/fragment_profile_other"
+        >
+        <argument
+            android:name="userName"
+            app:argType="string"
+            android:defaultValue="null"
+            />
+    </action>
+
+    <fragment
+        android:id="@+id/fragment_profile_other"
+        android:name="com.dandycat.naviexam.fragment.profile.OtherProfileFragment"
+        tools:layout="@layout/fragment_profile_other"
+        android:label="@string/label_profile_other"
+        >
+        <argument
+            android:name="userName"
+            app:argType="string"
+            android:defaultValue="null"
+            />
+    </fragment>
+
+
+
 
 </navigation>

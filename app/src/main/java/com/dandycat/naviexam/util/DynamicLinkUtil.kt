@@ -1,6 +1,7 @@
 package com.dandycat.naviexam.util
 
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import com.google.firebase.dynamiclinks.ShortDynamicLink
 import com.google.firebase.dynamiclinks.ktx.*
@@ -18,7 +19,6 @@ class DynamicLinkUtil @Inject constructor(private val mContext : Context) {
     private val packageName by lazy {
         mContext.packageName
     }
-
 
     fun createDynamicLink(key : String,value : String, callback: (Uri?) -> Unit){
         Firebase.dynamicLinks.shortLinkAsync(ShortDynamicLink.Suffix.SHORT){
@@ -41,5 +41,24 @@ class DynamicLinkUtil @Inject constructor(private val mContext : Context) {
         }.addOnFailureListener {
             callback(null)
         }
+    }
+
+    fun decodeDynamicLink(intent : Intent?, callback: (String?) -> Unit){
+        Firebase.dynamicLinks.getDynamicLink(intent)
+            .addOnSuccessListener {
+                try {
+                    it.link?.let{ uri ->
+                        val profile = uri.getQueryParameter("profile")
+                        Logger.d("uri : $uri / profile : $profile")
+                        callback(profile)
+                    }
+                }catch (e: Exception){
+                    Logger.e("decodeDynamicLink Execption : ${e.localizedMessage}")
+                    callback(null)
+                }
+            }
+            .addOnFailureListener {
+                callback(null)
+            }
     }
 }

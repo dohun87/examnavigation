@@ -5,7 +5,7 @@
     <data>
         <variable
             name="vm"
-            type="com.dandycat.naviexam.viewmodel.MainActivityViewModel" />
+            type="com.dandycat.naviexam.viewmodel.OtherProfileViewModel" />
     </data>
 
     <RelativeLayout
@@ -15,33 +15,22 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_centerInParent="true"
-            >
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:userName="@{vm.getLoginName}"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                />
+                app:userName="@{vm.otherUserName}" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="링크만들기"
                 android:onClick="@{()->vm.createDynamicLink()}"
-                />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="로그아웃"
-                android:onClick="@{()->vm.logoutUser()}"
-                />
+                android:text="링크만들기" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
