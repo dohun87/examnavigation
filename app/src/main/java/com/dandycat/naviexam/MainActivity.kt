@@ -1,5 +1,6 @@
 package com.dandycat.naviexam
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -73,5 +74,10 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
             }
             else -> false
         }
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        Logger.d("데이터 들어왔다!!")
     }
 }

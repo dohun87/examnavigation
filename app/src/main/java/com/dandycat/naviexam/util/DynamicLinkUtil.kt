@@ -11,7 +11,7 @@ class DynamicLinkUtil @Inject constructor(private val mContext : Context) {
 
     companion object{
         const val URI = "https://dandycat.com/"
-        const val PREFIX = "https://naviexam.page.link"
+        const val PREFIX = "https://naviexam.page.link/"
         const val MINUMUMVERSION = 1
     }
 
@@ -26,10 +26,11 @@ class DynamicLinkUtil @Inject constructor(private val mContext : Context) {
             domainUriPrefix = PREFIX
             androidParameters(packageName) {
                 minimumVersion = MINUMUMVERSION
+                fallbackUrl = Uri.parse(" https://www.google.co.kr")
             }
-            navigationInfoParameters { // IOS서 실행시키기 위한 로직
-                forcedRedirectEnabled = true
-            }
+//            navigationInfoParameters { // IOS서 실행시키기 위한 로직
+//                forcedRedirectEnabled = true
+//            }
             socialMetaTagParameters { // 해당 영역을 설정하여야 카톡등에서 보여진다
                 this.title = "$value"
                 description = "$value 정보"
