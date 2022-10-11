@@ -1,47 +1,33 @@
 {
   "project_info": {
-    "project_number": "197822330678",
-    "project_id": "pooleplayer-2e2c4",
-    "storage_bucket": "pooleplayer-2e2c4.appspot.com"
+    "project_number": "990548768576",
+    "project_id": "examnavi-9fd9a",
+    "storage_bucket": "examnavi-9fd9a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:197822330678:android:134016699ad3f923906597",
+        "mobilesdk_app_id": "1:990548768576:android:a9c07462fb50c8667b6ca5",
         "android_client_info": {
-          "package_name": "net.poolemath.pooleplayer.beta"
+          "package_name": "com.dandycat.naviexam"
         }
       },
       "oauth_client": [
         {
-          "client_id": "197822330678-nutci63iv7nr0l40kscd0jauatphrfrm.apps.googleusercontent.com",
-          "client_type": 3,
-		  "android_client_info": {
-			"package_name": "net.poolemath.pooleplayer.beta"
-			}
-        },
-		 {
-          "client_id": "197822330678-nutci63iv7nr0l40kscd0jauatphrfrm.apps.googleusercontent.com",
-          "client_type": 3,
-		  "android_client_info": {
-			"package_name": "net.poolemath.pooleplayer"
-			}
-        },
-		{
-          "client_id": "197822330678-nutci63iv7nr0l40kscd0jauatphrfrm.apps.googleusercontent.com",
+          "client_id": "990548768576-8o1ahrfdlveejbjcrs6e7t28rppdgdv2.apps.googleusercontent.com",
           "client_type": 3
-		}
+        }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAuV5NYGt_yxpnMHZjSOx_u43zEcS1CAZA"
+          "current_key": "AIzaSyCzIsmqqb8D1xsbRAicfZ9Vj1nsuFLRSj0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "197822330678-nutci63iv7nr0l40kscd0jauatphrfrm.apps.googleusercontent.com",
+              "client_id": "990548768576-8o1ahrfdlveejbjcrs6e7t28rppdgdv2.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

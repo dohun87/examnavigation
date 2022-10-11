@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.dandycat.data.pref.PreferenceModule
 import com.dandycat.naviexam.util.DynamicLinkUtil
 import com.dandycat.naviexam.util.Event
+import com.dandycat.naviexam.util.ToastModule
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -15,6 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MainActivityViewModel @Inject constructor(
     private val prefModule : PreferenceModule,
+    private val mToastModule: ToastModule,
     private val dynamicLinkUtil: DynamicLinkUtil
 ) : ViewModel(){
 
@@ -30,7 +32,11 @@ class MainActivityViewModel @Inject constructor(
             prefModule.getLoginName()?.let{
                 val key = "profile"
                 dynamicLinkUtil.createDynamicLink(key,it){ result ->
-                    _mDynamicLink.postValue(Event(result))
+                    result?.let {
+                        _mDynamicLink.postValue(Event(result))
+                    } ?: kotlin.run {
+                        mToastModule.showToast("링크 생성 실패")
+                    }
                 }
             }
         }

@@ -1,5 +1,6 @@
 package com.dandycat.naviexam.fragment.profile
 
+import android.content.Intent
 import android.net.Uri
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -59,7 +60,13 @@ class ProfileFragment() : BasePrimaryFragment<FragmentProfileBinding>(R.layout.f
         binding.vm = mainVm
     }
 
-    private fun sharedDynamicLink(uri : Uri){
-
+    private fun sharedDynamicLink(uri : Uri) {
+        Logger.d("profile Share Uri : $uri")
+        val intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, uri.toString())
+            type = "text/plain"
+        }
+        startActivity(Intent.createChooser(intent, "프로필 공유"))
     }
 }
