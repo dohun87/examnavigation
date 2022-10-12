@@ -82,6 +82,10 @@
             app:argType="string"
             android:defaultValue="null"
             />
+        <deepLink
+            android:id="@+id/other_deeplink"
+            app:uri="https://dandycat.com?profile={userName}"
+            />
     </fragment>
 
 

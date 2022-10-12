@@ -1,6 +1,7 @@
 package com.dandycat.naviexam
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -81,21 +82,37 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         }
     }
 
+    private fun createDeepLinkIntent(uri : Uri) = Intent().apply {
+        data = uri
+        addFlags()
+    }
+
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
         Logger.d("데이터 들어왔다!!")
-        mDynamicLinkUtil.decodeDynamicLink(intent){
+
+        mDynamicLinkUtil.decodeDynamicLinkUri(intent){
+            intent?.data = null // Null과 관계없이 삭제 한다.
             it?.let {
-                Logger.d("userName : $it")
-                if(!it.equals(vm.getLoginName(),true) &&
-                        !currentFragment.equals(getString(R.string.label_profile),true)){
-                    //SafeArgs를 이용한 동작 방식
-                    val args = OtherProfileFragmentDirections.moveProfileOther(it)
-                    findNavController(R.id.nav_host).navigate(args)
-                }
-            }?: kotlin.run {
-                Logger.e("정상데이터 아니다!!")
+                //Intent를 새로 동작시켜서 하도록 한다.
+                val intent = createDeepLinkIntent(it)
+                findNavController(R.id.nav_host).handleDeepLink(Intent().apply {
+                    data = it
+                })
             }
         }
+//        mDynamicLinkUtil.decodeDynamicLink(intent){
+//            it?.let {
+//                Logger.d("userName : $it")
+//                if(!it.equals(vm.getLoginName(),true) &&
+//                        !currentFragment.equals(getString(R.string.label_profile),true)){
+//                    //SafeArgs를 이용한 동작 방식
+//                    val args = OtherProfileFragmentDirections.moveProfileOther(it)
+//                    findNavController(R.id.nav_host).navigate(args)
+//                }
+//            }?: kotlin.run {
+//                Logger.e("정상데이터 아니다!!")
+//            }
+//        }
     }
 }

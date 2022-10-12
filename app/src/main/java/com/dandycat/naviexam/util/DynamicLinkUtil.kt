@@ -11,7 +11,7 @@ import javax.inject.Inject
 class DynamicLinkUtil @Inject constructor(private val mContext : Context) {
 
     companion object{
-        const val URI = "https://dandycat.com/"
+        const val URI = "https://dandycat.com"
         const val PREFIX = "https://naviexam.page.link/"
         const val MINUMUMVERSION = 1
     }
@@ -41,6 +41,22 @@ class DynamicLinkUtil @Inject constructor(private val mContext : Context) {
         }.addOnFailureListener {
             callback(null)
         }
+    }
+
+    fun decodeDynamicLinkUri(intent : Intent?, callback: (Uri?) -> Unit){
+        Firebase.dynamicLinks.getDynamicLink(intent)
+            .addOnSuccessListener {
+                try {
+                    it.link?.let { uri ->
+                        callback(uri)
+                    }
+                }catch (e : Exception){
+                    Logger.e("decodeDynamicLinkUri Exception : ${e.localizedMessage}")
+                    callback(null)
+                }
+            }.addOnFailureListener {
+                callback(null)
+            }
     }
 
     fun decodeDynamicLink(intent : Intent?, callback: (String?) -> Unit){
