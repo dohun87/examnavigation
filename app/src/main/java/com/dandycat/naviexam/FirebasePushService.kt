@@ -56,8 +56,10 @@ class FirebasePushService : FirebaseMessagingService() {
 
     /**
      * NavDeepLinkBuilder를 이용한 명시적 딥링크 예제 코드
-     * 하지만 이 방법을 쓰게 될 시 기존 스택을 초기화 하고 다시 동작 되는 문제가 발생한다.
-     * 해당 부분에 대해 저 조사 해보자
+     * 명시적 딥링크를 사용하게 될 시 지정된 화면으로의 이동이 가능하다.
+     * 하지만 해당 부분을 사용하게 될 경우, 기존 유지되는 백스택이 전부 제거후 새로운 스택으로 진행 되어진다.
+     * 해당 동작에 대해 생각을 해보았을 경우, 외부 위젯을 이용한 동작에 효율적일 것 같다.
+     * 내부적으로 해서 사용하게 될 시, 신중을 가하여 사용하도록 하자.
      */
     private fun createNaviPendingIntent() : PendingIntent {
         return NavDeepLinkBuilder(this).setGraph(R.navigation.nav_main_graph)
