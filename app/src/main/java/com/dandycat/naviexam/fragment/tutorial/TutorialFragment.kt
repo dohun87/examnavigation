@@ -22,7 +22,10 @@ class TutorialFragment() : BasePrimaryFragment<FragmentTutorialBinding>(R.layout
     }
 
     override fun onBackPressed() {
-        vm.setTutorialEnd()
+        //이전 프래그먼트로 데이터 전달시 사용
+        findNavController().previousBackStackEntry?.savedStateHandle?.set(TUTORIALEND,true)
+        //특정 프래그먼트로 데이터 전달시 사용
+        //getBackStackEntry(R.id.fragment_main).savedStateHandle.set(TUTORIALEND,true)
         findNavController().popBackStack()
     }
 }

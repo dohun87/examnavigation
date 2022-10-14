@@ -21,7 +21,7 @@ class PreferenceModule @Inject constructor(private val context : Context) {
     }
 
     fun setTutorialStatus(tutorialEnd : Boolean) = mEditor.putBoolean(TUTORIAL,tutorialEnd).commit()
-    fun getTutorialStatus() : Boolean = pref.getBoolean(TUTORIAL,true)
+    fun getTutorialStatus() : Boolean = pref.getBoolean(TUTORIAL,false)
 
     fun setLoginName(name : String?) = mEditor.putString(NAME,name).commit()
     fun getLoginName() = pref.getString(NAME,null)

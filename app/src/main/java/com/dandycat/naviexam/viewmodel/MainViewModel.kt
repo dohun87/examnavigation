@@ -11,4 +11,5 @@ class MainViewModel @Inject constructor(
 ) : ViewModel() {
 
     fun getTutorial() = mPrefModule.getTutorialStatus()
+    fun setTutorial(isTutorialEnd : Boolean) = mPrefModule.setTutorialStatus(isTutorialEnd)
 }

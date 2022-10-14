@@ -84,7 +84,6 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
 
     private fun createDeepLinkIntent(uri : Uri) = Intent().apply {
         data = uri
-        addFlags()
     }
 
     override fun onNewIntent(intent: Intent?) {

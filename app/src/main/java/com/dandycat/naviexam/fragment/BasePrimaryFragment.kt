@@ -11,6 +11,7 @@ import androidx.databinding.ViewDataBinding
 abstract class BasePrimaryFragment<V : ViewDataBinding>(layoutResId : Int) : BaseFragment<V>(layoutResId) {
 
     companion object {
+        const val TUTORIALEND = "tutorial_end"
         const val LOGINSTATUS = "login_status"
     }
     abstract fun initSetting()
