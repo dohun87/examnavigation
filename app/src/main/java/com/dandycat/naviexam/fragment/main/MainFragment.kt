@@ -24,7 +24,7 @@ class MainFragment() : BasePrimaryFragment<FragmentMainBinding>(R.layout.fragmen
             saveStateHandle.getLiveData<Boolean>(TUTORIALEND).observe(currentBackStackEntry, Observer {
                 Logger.d("튜토리얼 화면서 나오게 되었다")
                 if(it) {
-                    Logger.d("")
+                    Logger.d("튜토리얼에 대해 다음부터는 호출되지 않는다")
                     vm.setTutorial(it)
                 }
             })
