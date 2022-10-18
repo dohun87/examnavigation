@@ -11,7 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.dandycat.naviexam.databinding.ActivityMainBinding
-import com.dandycat.naviexam.fragment.profile.OtherProfileFragmentDirections
+import com.dandycat.naviexam.fragment.profile.ProfileFragmentDirections
 import com.dandycat.naviexam.util.DynamicLinkUtil
 import com.dandycat.naviexam.util.Logger
 import com.dandycat.naviexam.viewmodel.MainActivityViewModel
@@ -22,11 +22,12 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
 
+    private val vm : MainActivityViewModel by viewModels() // Activity용 ViewModel을 선언해준다
+
     private lateinit var binding : ActivityMainBinding
     private var currentFragment = ""
     @Inject lateinit var mDynamicLinkUtil: DynamicLinkUtil
 
-    private val vm : MainActivityViewModel by viewModels() // Activity용 ViewModel을 선언해준다
 
     private val visibleBtmNav : (CharSequence) -> Int = { destination ->
         when(destination){
@@ -75,7 +76,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
                 true
             }
             R.id.profile->{
-                findNavController(R.id.nav_host).navigate(R.id.action_fragment_main_to_fragment_profile)
+                findNavController(R.id.nav_host).navigate(R.id.move_profile)
                 true
             }
             else -> false

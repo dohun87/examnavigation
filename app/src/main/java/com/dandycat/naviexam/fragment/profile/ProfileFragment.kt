@@ -6,6 +6,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.dandycat.naviexam.R
 import com.dandycat.naviexam.databinding.FragmentProfileBinding
 import com.dandycat.naviexam.fragment.BasePrimaryFragment
@@ -42,16 +43,15 @@ class ProfileFragment() : BasePrimaryFragment<FragmentProfileBinding>(R.layout.f
             findNavController().navigate(R.id.move_login)
         }
         else{
-            mainVm.mDynamicLink.observe(viewLifecycleOwner,SingleEventObserver{
-                it?.let {
-                    sharedDynamicLink(it)
-                }
-            })
             mainVm.logout.observe(viewLifecycleOwner,SingleEventObserver{
                 if(it) findNavController().navigate(R.id.move_main)
             })
-
             initWidget()
+//            mainVm.mDynamicLink.observe(viewLifecycleOwner,SingleEventObserver{
+//                it?.let {
+//                    sharedDynamicLink(it)
+//                }
+//            })
         }
     }
 

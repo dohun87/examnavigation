@@ -27,6 +27,12 @@ class RegFragment() : BasePrimaryFragment<FragmentRegBinding>(R.layout.fragment_
         initWidget()
     }
 
+    private fun moveRegCompFragment(userName : String){
+        mainVm.setLoginName(userName)
+        val action = RegFragmentDirections.actionFragmentRegToFragmentRegComp(userName)
+        findNavController().navigate(action)
+    }
+
     override fun onBackPressed() {
         findNavController().popBackStack()
     }
@@ -35,9 +41,5 @@ class RegFragment() : BasePrimaryFragment<FragmentRegBinding>(R.layout.fragment_
         binding.vm = regVm
     }
 
-    private fun moveRegCompFragment(userName : String){
-        mainVm.setLoginName(userName)
-        val action = RegFragmentDirections.actionFragmentRegToFragmentRegComp(userName)
-        findNavController().navigate(action)
-    }
+
 }

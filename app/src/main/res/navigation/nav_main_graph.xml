@@ -36,9 +36,6 @@
         <action
             android:id="@+id/action_fragment_main_to_fragment_tutorial"
             app:destination="@id/fragment_tutorial" />
-        <action
-            android:id="@+id/action_fragment_main_to_fragment_profile"
-            app:destination="@id/fragment_profile" />
     </fragment>
 
     <!-- 메인 바텀을 눌렀을 시에 홈으로 이동 되어야 한다.-->
@@ -46,6 +43,10 @@
         android:id="@+id/move_main"
         app:destination="@id/fragment_main"
         />
+
+    <action
+        android:id="@+id/move_profile"
+        app:destination="@id/fragment_profile" />
 
     <fragment
         android:id="@+id/fragment_profile"

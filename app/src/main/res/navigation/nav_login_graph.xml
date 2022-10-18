@@ -12,12 +12,10 @@
         tools:layout="@layout/fragment_login"
         android:label="@string/label_login"
         >
-
         <action
             android:id="@+id/action_fragment_login_to_fragment_reg"
             app:destination="@id/fragment_reg" />
     </fragment>
-
 
     <fragment
         android:id="@+id/fragment_reg"
@@ -50,7 +48,6 @@
             app:argType="string"
             android:defaultValue="null"
             />
-
     </fragment>
 
 </navigation>

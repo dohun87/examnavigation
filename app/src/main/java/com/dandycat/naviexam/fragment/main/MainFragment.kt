@@ -2,6 +2,7 @@ package com.dandycat.naviexam.fragment.main
 
 import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
+import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.dandycat.naviexam.R
