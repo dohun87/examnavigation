@@ -91,16 +91,16 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         super.onNewIntent(intent)
         Logger.d("데이터 들어왔다!!")
 
-        mDynamicLinkUtil.decodeDynamicLinkUri(intent){
-            intent?.data = null // Null과 관계없이 삭제 한다.
-            it?.let {
-                //Intent를 새로 동작시켜서 하도록 한다.
-                val intent = createDeepLinkIntent(it)
-                findNavController(R.id.nav_host).handleDeepLink(Intent().apply {
-                    data = it
-                })
-            }
-        }
+//        mDynamicLinkUtil.decodeDynamicLinkUri(intent){
+//            intent?.data = null // Null과 관계없이 삭제 한다.
+//            it?.let {
+//                //Intent를 새로 동작시켜서 하도록 한다.
+//                val intent = createDeepLinkIntent(it)
+//                findNavController(R.id.nav_host).handleDeepLink(Intent().apply {
+//                    data = it
+//                })
+//            }
+//        }
 //        mDynamicLinkUtil.decodeDynamicLink(intent){
 //            it?.let {
 //                Logger.d("userName : $it")

@@ -9,4 +9,5 @@
     <string name="label_login">LoginFragment</string>
     <string name="label_reg">RegFragment</string>
     <string name="label_reg_comp">RegCompFragment</string>
+    <string name="label_notice">NoticeFragment</string>
 </resources>

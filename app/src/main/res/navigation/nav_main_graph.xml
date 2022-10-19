@@ -89,6 +89,14 @@
             />
     </fragment>
 
+    <fragment
+        android:id="@+id/fragment_notice"
+        android:name="com.dandycat.naviexam.fragment.notice.NoticeFragment"
+        tools:layout="@layout/fragment_notice"
+        android:label="@string/label_notice"
+        >
+
+    </fragment>
 
 
 

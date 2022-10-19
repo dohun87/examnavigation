@@ -62,12 +62,15 @@ class FirebasePushService : FirebaseMessagingService() {
      * 내부적으로 해서 사용하게 될 시, 신중을 가하여 사용하도록 하자.
      */
     private fun createNaviPendingIntent() : PendingIntent {
+        val bundle = Bundle().apply {
+            putString("TEST","PUSH")
+        }
+
         return NavDeepLinkBuilder(this).setGraph(R.navigation.nav_main_graph)
-            .setDestination(R.id.fragment_main)
+            //.addDestination(R.id.fragment_splash,null)
+            //.addDestination(R.id.fragment_main,null)
+            .setDestination(R.id.fragment_notice,bundle)
             .setComponentName(MainActivity::class.java)
-            .setArguments(Bundle().apply {
-                putString("TEST","PUSH")
-            })
             .createPendingIntent()
     }
 }
