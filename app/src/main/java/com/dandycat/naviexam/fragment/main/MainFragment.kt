@@ -1,6 +1,7 @@
 package com.dandycat.naviexam.fragment.main
 
 import androidx.activity.addCallback
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.lifecycle.Observer
@@ -9,6 +10,7 @@ import com.dandycat.naviexam.R
 import com.dandycat.naviexam.databinding.FragmentMainBinding
 import com.dandycat.naviexam.fragment.BasePrimaryFragment
 import com.dandycat.naviexam.util.Logger
+import com.dandycat.naviexam.viewmodel.MainActivityViewModel
 import com.dandycat.naviexam.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -16,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainFragment() : BasePrimaryFragment<FragmentMainBinding>(R.layout.fragment_main) {
 
     private val vm : MainViewModel by viewModels()
+    private val mainVm : MainActivityViewModel by activityViewModels()
 
     override fun initSetting() {
         if(!vm.getTutorial()) { // 만약 튜토리얼 일 경우에 대한 동작 적용한다.
@@ -35,13 +38,12 @@ class MainFragment() : BasePrimaryFragment<FragmentMainBinding>(R.layout.fragmen
     }
 
     override fun initWidget() {
-        //명시적 인텐트에 대한 동작 쳌므 - 차후 진행 다시 하자
-//        arguments?.let {
-//            Logger.d("데이터가 있습니다!! data : ${it.getString("TEST")}")
-//            arguments = null
-//        } ?: kotlin.run {
-//            Logger.d("데이터가 없다!!")
-//        }
+        mainVm.appLink.observe(viewLifecycleOwner){
+            it?.let {
+                findNavController().navigate(it)
+                mainVm.setAppLink(null)
+            }
+        }
     }
 
     override fun onBackPressed() {

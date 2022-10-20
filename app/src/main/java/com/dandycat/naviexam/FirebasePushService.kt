@@ -4,7 +4,9 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import android.media.RingtoneManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import androidx.core.app.NotificationCompat
@@ -42,7 +44,8 @@ class FirebasePushService : FirebaseMessagingService() {
                 .setSound(defaultSoundUri)
                 .setAutoCancel(true)
                 .setSmallIcon(R.drawable.ic_baseline_home_24)
-                .setContentIntent(createNaviPendingIntent())
+                //.setContentIntent(createNaviPendingIntent())
+                .setContentIntent(createPendingIntent())
 
             //채널 생성
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
@@ -72,5 +75,25 @@ class FirebasePushService : FirebaseMessagingService() {
             .setDestination(R.id.fragment_notice,bundle)
             .setComponentName(MainActivity::class.java)
             .createPendingIntent()
+    }
+
+    private fun createPendingIntent() : PendingIntent {
+        val uriPrefix = applicationContext.getString(R.string.uri_prefix)+"?notice=푸시알람받고 넘어왔습니다."
+        val intent = Intent(this,MainActivity::class.java).apply {
+            action = Intent.ACTION_VIEW
+            addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            data = Uri.parse(uriPrefix)
+        }
+        //펜딩인텐트 관련 안드로이드 12서 Flag가 추가 되었다. 해당 Flag를 넣어야 크래시 나지 않기 때문에 추가해주도록 한다.
+        //FLAG_MUTABLE = 변환 가능
+        //FLAG_IMMUTABLE = 변환 불가능
+        return if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S){
+            PendingIntent.getActivity(applicationContext,0,intent,
+                PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+            )
+        }else{
+            PendingIntent.getActivity(applicationContext,0,intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        }
+
     }
 }

@@ -29,8 +29,11 @@ class MainActivityViewModel @Inject constructor(
     private val _logout = MutableLiveData<Event<Boolean>>()
     val logout : LiveData<Event<Boolean>> get() = _logout
 
-    fun createDynamicLink() {
+    //저장하기 위한 AppLink LiveData 선언
+    private val _appLink = MutableLiveData<Uri?>()
+    val appLink : LiveData<Uri?> get() = _appLink
 
+    fun createDynamicLink() {
         viewModelScope.launch {
             prefModule.getLoginName()?.let{
                 val key = "profile"
@@ -50,5 +53,9 @@ class MainActivityViewModel @Inject constructor(
             prefModule.setLoginName(null)
             _logout.postValue(Event(true))
         }
+    }
+
+    fun setAppLink(uri : Uri?){
+        _appLink.postValue(uri)
     }
 }

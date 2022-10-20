@@ -18,7 +18,7 @@
             android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"
-            android:launchMode="singleTop"
+            android:launchMode="singleTask"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,9 +28,14 @@
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
                 <category android:name="android.intent.category.DEFAULT"/>
+                <!-- Dynamic Link, Push Notification등 외부 앱에 대한 스키마로 진행한다. -->
                 <data android:host="dandycat.com" android:scheme="https"/>
                 <data android:host="dandycat.com" android:scheme="http"/>
+                <!-- 실제 Navigation서 동작되는 부분에 대하여는 하기 동작을 기준으로 작성한다.-->
+                <data android:host="action" android:scheme="app"/>
             </intent-filter>
+            <!-- 암시적 딥링크 설정에 대한 nav-graph 설정 -->
+            <nav-graph android:value="@navigation/nav_main_graph"/>
         </activity>
         <service android:name=".FirebasePushService"
             android:exported="false"

@@ -50,7 +50,12 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Logger.d("onCreate")
+
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
+        intent?.let {
+            decodeDynamicLink(it)
+        }
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
         val navController = navHostFragment.navController
@@ -87,32 +92,43 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         data = uri
     }
 
+    //onNewIntent로 넘어오는 경우 해당 부분서 처리 해준다!!
     override fun onNewIntent(intent: Intent?) {
+        Logger.e("onNewIntent")
         super.onNewIntent(intent)
-        Logger.d("데이터 들어왔다!!")
-
-//        mDynamicLinkUtil.decodeDynamicLinkUri(intent){
-//            intent?.data = null // Null과 관계없이 삭제 한다.
-//            it?.let {
-//                //Intent를 새로 동작시켜서 하도록 한다.
-//                val intent = createDeepLinkIntent(it)
-//                findNavController(R.id.nav_host).handleDeepLink(Intent().apply {
-//                    data = it
-//                })
-//            }
-//        }
-//        mDynamicLinkUtil.decodeDynamicLink(intent){
-//            it?.let {
-//                Logger.d("userName : $it")
-//                if(!it.equals(vm.getLoginName(),true) &&
-//                        !currentFragment.equals(getString(R.string.label_profile),true)){
-//                    //SafeArgs를 이용한 동작 방식
-//                    val args = OtherProfileFragmentDirections.moveProfileOther(it)
-//                    findNavController(R.id.nav_host).navigate(args)
-//                }
-//            }?: kotlin.run {
-//                Logger.e("정상데이터 아니다!!")
-//            }
-//        }
+        intent?.let {
+            val uri = it.data
+            uri?.let {
+                Logger.d("인텐트 동작된다!! - uri : $uri")
+                val convertUri = convertAppUriLink(uri.toString())
+                findNavController(R.id.nav_host).navigate(convertUri)
+            }
+        }
     }
+
+    private fun decodeDynamicLink(intent : Intent){
+        mDynamicLinkUtil.decodeDynamicLink(intent){
+            it?.let {
+                Logger.d("다이나믹 링크 인텐트 동작 시킨다!! - uri : $it")
+                //findNavController(R.id.nav_host).navigate(Uri.parse(it))
+                val uri = convertAppUriLink(it)
+                Logger.d("convertAppUri : $uri")
+                if(isSplash()){ // 만약 스플래시 화면일 경우 해당 부분서 동작 시켜준다
+                    vm.setAppLink(uri)
+                }else{
+                    findNavController(R.id.nav_host).navigate(uri)
+                }
+            }?: kotlin.run {
+                Logger.d("제대로 풀리지 않았으니 일루 온다")
+            }
+        }
+    }
+
+    private val convertAppUriLink : (String) -> Uri = { link ->
+        val appDeepLink = getString(R.string.app_prefix)
+        val linkSplit = link.split("?")
+        Uri.parse(appDeepLink+linkSplit[linkSplit.size-1])
+    }
+
+    private fun isSplash() = currentFragment.equals(getString(R.string.label_splash),true)
 }

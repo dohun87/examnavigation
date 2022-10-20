@@ -73,6 +73,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-messaging-ktx'
 
+    //펜딩인텐트 관련 안드로이드 12서 업데이트 이후 crash 날 수 잇기 때문에 해당 부분을 추가해준다
+    implementation 'androidx.work:work-runtime-ktx:2.7.0'
+
     implementation project(':domain')
     implementation project(':data')
 }

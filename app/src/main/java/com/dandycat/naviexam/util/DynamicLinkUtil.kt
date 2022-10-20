@@ -11,7 +11,7 @@ import javax.inject.Inject
 class DynamicLinkUtil @Inject constructor(private val mContext : Context) {
 
     companion object{
-        const val URI = "https://dandycat.com"
+        const val URI = "https://dandycat.com/"
         const val PREFIX = "https://naviexam.page.link/"
         const val MINUMUMVERSION = 1
     }
@@ -66,7 +66,7 @@ class DynamicLinkUtil @Inject constructor(private val mContext : Context) {
                     it.link?.let{ uri ->
                         val profile = uri.getQueryParameter("profile")
                         Logger.d("uri : $uri / profile : $profile")
-                        callback(profile)
+                        callback(uri.toString())
                     }
                 }catch (e: Exception){
                     Logger.e("decodeDynamicLink Execption : ${e.localizedMessage}")

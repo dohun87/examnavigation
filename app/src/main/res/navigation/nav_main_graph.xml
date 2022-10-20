@@ -83,9 +83,10 @@
             app:argType="string"
             android:defaultValue="null"
             />
+        <!-- app:uri="app://action/?profile={userName}"       -->
         <deepLink
             android:id="@+id/other_deeplink"
-            app:uri="https://dandycat.com?profile={userName}"
+            app:uri="app://actions/?profile={userName}"
             />
     </fragment>
 
@@ -95,6 +96,16 @@
         tools:layout="@layout/fragment_notice"
         android:label="@string/label_notice"
         >
+        <argument
+            android:name="notice"
+            app:argType="string"
+            android:defaultValue="null"
+            />
+        <!--            app:uri="https://dandycat.com/?notice={notice}"-->
+        <deepLink
+            android:id="@+id/notice_deeplink"
+            app:uri="app://actions/?notice={notice}"
+            />
 
     </fragment>
 

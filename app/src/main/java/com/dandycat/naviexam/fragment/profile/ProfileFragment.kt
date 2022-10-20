@@ -47,11 +47,11 @@ class ProfileFragment() : BasePrimaryFragment<FragmentProfileBinding>(R.layout.f
                 if(it) findNavController().navigate(R.id.move_main)
             })
             initWidget()
-//            mainVm.mDynamicLink.observe(viewLifecycleOwner,SingleEventObserver{
-//                it?.let {
-//                    sharedDynamicLink(it)
-//                }
-//            })
+            mainVm.mDynamicLink.observe(viewLifecycleOwner,SingleEventObserver{
+                it?.let {
+                    sharedDynamicLink(it)
+                }
+            })
         }
     }
 

@@ -422,3 +422,7 @@ domain/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin
 .idea/libraries/Gradle__com_google_firebase_firebase_iid_interop_17_1_0_aar.xml
 .idea/libraries/Gradle__com_google_firebase_firebase_messaging_23_0_8_aar.xml
 .idea/libraries/Gradle__com_google_firebase_firebase_messaging_ktx_23_0_8_aar.xml
+.idea/libraries/Gradle__androidx_startup_startup_runtime_1_0_0_aar.xml
+.idea/libraries/Gradle__androidx_work_work_runtime_2_7_0_aar.xml
+.idea/libraries/Gradle__androidx_work_work_runtime_ktx_2_7_0_aar.xml
+.idea/libraries/Gradle__com_google_guava_listenablefuture_1_0.xml

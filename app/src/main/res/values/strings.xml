@@ -10,4 +10,8 @@
     <string name="label_reg">RegFragment</string>
     <string name="label_reg_comp">RegCompFragment</string>
     <string name="label_notice">NoticeFragment</string>
+
+    <!-- URI Prefix 동작 -->
+    <string name="uri_prefix">https://dandycat.com/</string>
+    <string name="app_prefix">app://actions/?</string>
 </resources>
