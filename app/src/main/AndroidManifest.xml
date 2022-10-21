@@ -4,7 +4,7 @@
     package="com.dandycat.naviexam">
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -31,8 +31,7 @@
                 <!-- Dynamic Link, Push Notification등 외부 앱에 대한 스키마로 진행한다. -->
                 <data android:host="dandycat.com" android:scheme="https"/>
                 <data android:host="dandycat.com" android:scheme="http"/>
-                <!-- 실제 Navigation서 동작되는 부분에 대하여는 하기 동작을 기준으로 작성한다.-->
-                <data android:host="action" android:scheme="app"/>
+                <data android:host="actions" android:scheme="app"/>
             </intent-filter>
             <!-- 암시적 딥링크 설정에 대한 nav-graph 설정 -->
             <nav-graph android:value="@navigation/nav_main_graph"/>

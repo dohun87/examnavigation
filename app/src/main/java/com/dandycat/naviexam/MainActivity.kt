@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
 
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
         intent?.let {
-            decodeDynamicLink(it)
+            checkedOnCreateIntent(it)
         }
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
@@ -99,9 +99,23 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         intent?.let {
             val uri = it.data
             uri?.let {
-                Logger.d("인텐트 동작된다!! - uri : $uri")
-                val convertUri = convertAppUriLink(uri.toString())
-                findNavController(R.id.nav_host).navigate(convertUri)
+                readyAppLink(uri.toString())
+            }
+        }
+    }
+
+    /**
+     * onCreate시에 대한 동작을 체크 하도록 한다.
+     */
+    private fun checkedOnCreateIntent(intent : Intent){
+        with(intent){
+            data?.let {
+                Logger.d("data : $it")
+                if(getString(R.string.link_prefix).contains(it.toString(),true)){
+                    decodeDynamicLink(this)
+                }else{
+                    readyAppLink(it.toString())
+                }
             }
         }
     }
@@ -110,17 +124,20 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         mDynamicLinkUtil.decodeDynamicLink(intent){
             it?.let {
                 Logger.d("다이나믹 링크 인텐트 동작 시킨다!! - uri : $it")
-                //findNavController(R.id.nav_host).navigate(Uri.parse(it))
-                val uri = convertAppUriLink(it)
-                Logger.d("convertAppUri : $uri")
-                if(isSplash()){ // 만약 스플래시 화면일 경우 해당 부분서 동작 시켜준다
-                    vm.setAppLink(uri)
-                }else{
-                    findNavController(R.id.nav_host).navigate(uri)
-                }
+                readyAppLink(it)
             }?: kotlin.run {
                 Logger.d("제대로 풀리지 않았으니 일루 온다")
             }
+        }
+    }
+
+    private fun readyAppLink(uriString : String){
+        Logger.d("readyAppLink - uriString : $uriString")
+        val uri = convertAppUriLink(uriString)
+        if(isSplash()){ // 만약 스플래시 화면일 경우 해당 부분서 동작 시켜준다
+            vm.setAppLink(uri)
+        }else{
+            findNavController(R.id.nav_host).navigate(uri)
         }
     }
 
@@ -130,5 +147,8 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         Uri.parse(appDeepLink+linkSplit[linkSplit.size-1])
     }
 
-    private fun isSplash() = currentFragment.equals(getString(R.string.label_splash),true)
+    private fun isSplash() : Boolean {
+        return currentFragment.equals(getString(R.string.label_splash),true) ||
+                currentFragment.isNullOrEmpty()
+    }
 }
